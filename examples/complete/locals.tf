@@ -10,18 +10,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "signalr_id" {
-  value = azurerm_signalr_service.signalr.id
-}
+locals {
+  resource_group_name = module.resource_names["rg"].minimal_random_suffix
+  signalr_name        = module.resource_names["signalr"].minimal_random_suffix
 
-output "signalr_name" {
-  value = azurerm_signalr_service.signalr.name
-}
+  default_tags = {
+    provisioner = "terraform"
+  }
 
-output "location" {
-  value = azurerm_signalr_service.signalr.location
-}
-
-output "resource_group_name" {
-  value = azurerm_signalr_service.signalr.resource_group_name
+  tags = merge(local.default_tags, var.tags)
 }

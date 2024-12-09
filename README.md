@@ -1,11 +1,11 @@
-# Your Module Name
+# tf-azurerm-module_primitive-signalr
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 ## Overview
 
-What does this module do?
+This terraform module will provision a SignalR service in the Azure cloud.
 
 ## Pre-Commit hooks
 
@@ -103,3 +103,57 @@ If `make check` target is successful, developer is good to commit the code to pr
 - runs `conftests`. `conftests` make sure `policy` checks are successful.
 - runs `terratest`. This is integration test suit.
 - runs `opa` tests
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0, <= 1.5.5 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | ~> 3.6 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.12.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [azurerm_signalr_service.signalr](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/signalr_service) | resource |
+| [azurerm_signalr_service_network_acl.acl](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/signalr_service_network_acl) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | (Require) Resource group name of the SignalR Service | `string` | n/a | yes |
+| <a name="input_signalr_location"></a> [signalr\_location](#input\_signalr\_location) | (Require) Location of the SignalR Service | `string` | n/a | yes |
+| <a name="input_signalr_name"></a> [signalr\_name](#input\_signalr\_name) | (Require) Name of the signalr to create | `string` | n/a | yes |
+| <a name="input_public_network_access_enabled"></a> [public\_network\_access\_enabled](#input\_public\_network\_access\_enabled) | (Optional) Indicates whether public network access is allowed | `bool` | `true` | no |
+| <a name="input_connectivity_logs_enabled"></a> [connectivity\_logs\_enabled](#input\_connectivity\_logs\_enabled) | (Optional) Indicates whether to enable connectivity logs | `bool` | `false` | no |
+| <a name="input_http_request_logs_enabled"></a> [http\_request\_logs\_enabled](#input\_http\_request\_logs\_enabled) | (Optional) Indicates whether to enable http request logs | `bool` | `false` | no |
+| <a name="input_live_trace_enabled"></a> [live\_trace\_enabled](#input\_live\_trace\_enabled) | (Optional) Indicated whether to enable live traces | `bool` | `false` | no |
+| <a name="input_messaging_logs_enabled"></a> [messaging\_logs\_enabled](#input\_messaging\_logs\_enabled) | (Optional) Indicates whether to enable messaging logs | `bool` | `false` | no |
+| <a name="input_service_mode"></a> [service\_mode](#input\_service\_mode) | (Optional) The service mode of the SignalR Service | `string` | `"Default"` | no |
+| <a name="input_sku_name"></a> [sku\_name](#input\_sku\_name) | (Optional) The SKU of the SignalR Service | `string` | `"Free_F1"` | no |
+| <a name="input_sku_capacity"></a> [sku\_capacity](#input\_sku\_capacity) | (Optional) The capacity of the SKU | `number` | `1` | no |
+| <a name="input_cors_allowed_origins"></a> [cors\_allowed\_origins](#input\_cors\_allowed\_origins) | (Optional) The allowed origins for CORS, separated by comma | `list(string)` | `[]` | no |
+| <a name="input_upstream_endpoint"></a> [upstream\_endpoint](#input\_upstream\_endpoint) | (Optional) The upstream endpoint configuration | <pre>object({<br>    category_pattern = optional(list(string))<br>    event_pattern    = optional(list(string))<br>    hub_pattern      = optional(list(string))<br>    url_template     = optional(string)<br>  })</pre> | `null` | no |
+| <a name="input_private_endpoint_id"></a> [private\_endpoint\_id](#input\_private\_endpoint\_id) | (Optional) The ID of the private endpoint | `string` | `null` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | (Optional) A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_signalr_id"></a> [signalr\_id](#output\_signalr\_id) | n/a |
+| <a name="output_signalr_name"></a> [signalr\_name](#output\_signalr\_name) | n/a |
+| <a name="output_location"></a> [location](#output\_location) | n/a |
+| <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | n/a |
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

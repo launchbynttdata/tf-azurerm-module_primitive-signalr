@@ -11,17 +11,17 @@
 // limitations under the License.
 
 output "signalr_id" {
-  value = azurerm_signalr_service.signalr.id
+  value = module.signalr.signalr_id
 }
 
 output "signalr_name" {
-  value = azurerm_signalr_service.signalr.name
+  value = module.signalr.signalr_name
 }
 
 output "location" {
-  value = azurerm_signalr_service.signalr.location
+  value = module.signalr.location
 }
 
 output "resource_group_name" {
-  value = azurerm_signalr_service.signalr.resource_group_name
+  value = module.signalr.resource_group_name
 }

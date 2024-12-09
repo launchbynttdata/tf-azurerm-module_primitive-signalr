@@ -1,36 +1,57 @@
 package testimpl
 
 import (
-	"regexp"
+	"context"
+	"os"
 	"testing"
 
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore"
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/arm"
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/cloud"
+	"github.com/Azure/azure-sdk-for-go/sdk/azcore/to"
+	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
+	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/signalr/armsignalr"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/launchbynttdata/lcaf-component-terratest/types"
-	"github.com/stretchr/testify/assert"
+	"gotest.tools/v3/assert"
 )
 
-func TestComposableComplete(t *testing.T, ctx types.TestContext) {
-	// TODO: Remove this test from your module once you have defined some other tests.
-	t.Run("TestAlwaysSucceeds", func(t *testing.T) {
-		assert.Equal(t, "foo", "foo", "Should always be the same!")
-		assert.NotEqual(t, "foo", "bar", "Should never be the same!")
+func TestSignalRExists(t *testing.T, ctx types.TestContext) {
+	subscriptionId := os.Getenv("ARM_SUBSCRIPTION_ID")
+
+	if len(subscriptionId) == 0 {
+		t.Fatal("ARM_SUBSCRIPTION_ID environment variable is not set")
+	}
+
+	credential, err := azidentity.NewDefaultAzureCredential(nil)
+	if err != nil {
+		t.Fatalf("Unable to get credentials: %e\n", err)
+	}
+
+	options := arm.ClientOptions{
+		ClientOptions: azcore.ClientOptions{
+			Cloud: cloud.AzurePublic,
+		},
+	}
+
+	clientFactory, err := armsignalr.NewClientFactory(subscriptionId, credential, &options)
+	if err != nil {
+		t.Fatalf("failed to create SignalR client: %v", err)
+	}
+
+	t.Run("doesSignalRExist", func(t *testing.T) {
+		// resourceGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "resource_group_name")
+		signalr_name := terraform.Output(t, ctx.TerratestTerraformOptions(), "signalr_name")
+
+		signalR, err := clientFactory.NewClient().CheckNameAvailability(context.Background(), "eastus", armsignalr.NameAvailabilityParameters{
+			Name: to.Ptr(signalr_name),
+			Type: to.Ptr("Microsoft.SignalRService/SignalR"),
+		}, nil)
+		if err != nil {
+			t.Fatalf("failed to finish the request: %v", err)
+		}
+
+		assert.Assert(t, *signalR.NameAvailable)
 	})
 
-	// When cloning the skeleton to a new module, you will need to change the below test
-	// to meet your needs and add any new tests that apply to your situation.
-	t.Run("TestSkeletonDeployedIsInvokable", func(t *testing.T) {
-		output := terraform.Output(t, ctx.TerratestTerraformOptions(), "string")
-
-		// Output contains only alphanumeric characters and 🍰
-		assert.Regexp(t, regexp.MustCompile("^[A-Za-z🍰0-9]+$"), output)
-
-		// Other tests would go here and can use functions from lcaf-component-terratest.
-		// Examples (from lambda):
-		// functionName := terraform.Output(t, ctx.TerratestTerraformOptions, "function_name")
-		// require.NotEmpty(t, functionName, "name of deployed lambda should be set")
-		// awsApiLambdaClient := test_helper_lambda.GetAWSApiLambdaClient(t)
-		// test_helper_lambda.WaitForLambdaSpinUp(t, awsApiLambdaClient, functionName)
-		// test_helper_lambda.TestIsLambdaInvokable(t, awsApiLambdaClient, functionName)
-		// test_helper_lambda.TestLambdaTags(t, awsApiLambdaClient, functionName, ctx.TestConfig.(*ThisTFModuleConfig).Tags)
-	})
 }

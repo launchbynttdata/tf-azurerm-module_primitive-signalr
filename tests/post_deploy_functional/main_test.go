@@ -17,7 +17,7 @@ import (
 
 	"github.com/launchbynttdata/lcaf-component-terratest/lib"
 	"github.com/launchbynttdata/lcaf-component-terratest/types"
-	"github.com/launchbynttdata/lcaf-skeleton-terraform/tests/testimpl"
+	"github.com/launchbynttdata/tf-azurerm-module_primitive-signalr/tests/testimpl"
 )
 
 const (
@@ -33,5 +33,5 @@ func TestSkeletonModule(t *testing.T) {
 		SetTestConfigFileName(infraTFVarFileNameDefault).
 		Build()
 
-	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestComposableComplete)
+	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestSignalRExists)
 }

@@ -10,18 +10,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-output "signalr_id" {
-  value = azurerm_signalr_service.signalr.id
-}
+terraform {
+  required_version = "~> 1.0"
 
-output "signalr_name" {
-  value = azurerm_signalr_service.signalr.name
-}
-
-output "location" {
-  value = azurerm_signalr_service.signalr.location
-}
-
-output "resource_group_name" {
-  value = azurerm_signalr_service.signalr.resource_group_name
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 3.113"
+    }
+  }
 }
