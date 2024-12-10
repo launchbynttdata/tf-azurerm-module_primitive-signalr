@@ -29,7 +29,7 @@ module "resource_group" {
   source  = "terraform.registry.launch.nttdata.com/module_primitive/resource_group/azurerm"
   version = "~> 1.0"
 
-  name     = module.resource_names["resource_group"].standard
+  name     = module.resource_names["rg"].standard
   location = var.region
 
   tags       = local.tags
@@ -39,6 +39,6 @@ module "resource_group" {
 module "signalr" {
   source              = "../.."
   signalr_location    = var.region
-  resource_group_name = module.resource_names["resource_group"].standard
+  resource_group_name = module.resource_names["rg"].standard
   signalr_name        = module.resource_names["signalr"].standard
 }

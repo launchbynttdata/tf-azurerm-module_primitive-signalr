@@ -57,26 +57,20 @@ resource "azurerm_signalr_service" "signalr" {
 }
 
 resource "azurerm_signalr_service_network_acl" "acl" {
+  for_each           = var.network_acl != null ? toset(["network_acl"]) : []
   signalr_service_id = azurerm_signalr_service.signalr.id
-  default_action     = "Deny"
+  default_action     = var.network_acl.default_action
 
   public_network {
-    allowed_request_types = var.public_network_access_enabled ? [
-      "ClientConnection",
-      "RESTAPI"
-    ] : null
+    allowed_request_types = var.network_acl.allowed_request_types != null ? var.network_acl.allowed_request_types : null
   }
 
   dynamic "private_endpoint" {
-    for_each = var.private_endpoint_id != null ? ["private_endpoint"] : []
+    for_each = var.private_endpoints != null ? var.private_endpoints : []
     content {
-      id = var.private_endpoint_id
-      allowed_request_types = [
-        "ClientConnection",
-        "ServerConnection",
-        "RESTAPI",
-        "Trace"
-      ]
+      id                    = private_endpoint.value.private_endpoint_id
+      allowed_request_types = private_endpoint.value.allowed_request_types
     }
   }
+
 }

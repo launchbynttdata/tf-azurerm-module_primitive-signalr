@@ -99,6 +99,24 @@ variable "private_endpoint_id" {
   default     = null
 }
 
+variable "network_acl" {
+  description = "(Optional) The network ACL configuration"
+  type = object({
+    default_action        = string
+    allowed_request_types = list(string)
+  })
+  default = null
+}
+
+variable "private_endpoints" {
+  description = "(Optional) The private endpoints configuration"
+  type = list(object({
+    private_endpoint_id   = string
+    allowed_request_types = list(string)
+  }))
+  default = []
+}
+
 variable "tags" {
   description = "(Optional) A mapping of tags to assign to the resource."
   type        = map(string)
