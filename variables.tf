@@ -62,18 +62,39 @@ variable "service_mode" {
   description = "(Optional) The service mode of the SignalR Service"
   type        = string
   default     = "Default"
+
+  validation {
+    condition     = can(regex("^(Default|Classic|Serverless)$", var.service_mode))
+    error_message = "Invalid service_mode value"
+  }
 }
 
 variable "sku_name" {
   description = "(Optional) The SKU of the SignalR Service"
   type        = string
   default     = "Free_F1"
+  validation {
+    condition     = can(regex("^(Free_F1|Standard_S1|Premium_P1|Premium_P2)$", var.sku_name))
+    error_message = "Invalid sku_name value"
+  }
 }
 
 variable "sku_capacity" {
   description = "(Optional) The capacity of the SKU"
   type        = number
   default     = 1
+  validation {
+    condition     = var.sku_capacity == null || can(regex("^[0-9]$", var.sku_capacity))
+    error_message = "Invalid `sku_capacity` value"
+  }
+  validation {
+    condition = contains([
+      1, 2, 3, 4, 5, 6, 7, 8, 9,
+      10, 20, 30, 40, 50, 60, 70, 80, 90,
+    100, 200, 300, 400, 500, 600, 700, 800, 900, 1000], var.sku_capacity)
+    error_message = "Invalid `sku_capacity` value"
+  }
+
 }
 
 variable "cors_allowed_origins" {
@@ -91,12 +112,6 @@ variable "upstream_endpoint" {
     url_template     = optional(string)
   })
   default = null
-}
-
-variable "private_endpoint_id" {
-  description = "(Optional) The ID of the private endpoint"
-  type        = string
-  default     = null
 }
 
 variable "network_acl" {
