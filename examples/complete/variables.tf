@@ -31,7 +31,7 @@ variable "product_service" {
 variable "environment" {
   description = "Environment in which the resource should be provisioned like dev, qa, prod etc."
   type        = string
-  default     = "sandbox"
+  default     = "dev"
 }
 
 variable "environment_number" {
@@ -55,7 +55,7 @@ variable "resource_names_map" {
     }
   ))
   default = {
-    rg = {
+    resource_group = {
       name       = "rg"
       max_length = 60
     }
