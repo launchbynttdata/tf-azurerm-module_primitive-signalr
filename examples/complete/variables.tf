@@ -66,30 +66,6 @@ variable "resource_names_map" {
   }
 }
 
-variable "service_mode" {
-  description = "The mode of the SignalR Service"
-  type        = string
-  default     = "Serverless"
-}
-
-variable "network_acl" {
-  description = "(Optional) The network ACL configuration"
-  type = object({
-    default_action        = string
-    allowed_request_types = list(string)
-  })
-  default = null
-}
-
-variable "private_endpoints" {
-  description = "(Optional) The private endpoints configuration"
-  type = list(object({
-    private_endpoint_id   = string
-    allowed_request_types = list(string)
-  }))
-  default = []
-}
-
 variable "tags" {
   description = "A mapping of tags to assign to the resource."
   type        = map(string)

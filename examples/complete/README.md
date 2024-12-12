@@ -34,9 +34,6 @@ No resources.
 | <a name="input_environment_number"></a> [environment\_number](#input\_environment\_number) | The environment count for the respective environment. Defaults to 000. Increments in value of 1 | `string` | `"000"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Azure Region in which the infra needs to be provisioned | `string` | `"eastus"` | no |
 | <a name="input_resource_names_map"></a> [resource\_names\_map](#input\_resource\_names\_map) | A map of key to resource\_name that will be used by tf-launch-module\_library-resource\_name to generate resource names | <pre>map(object(<br>    {<br>      name       = string<br>      max_length = optional(number, 60)<br>    }<br>  ))</pre> | <pre>{<br>  "rg": {<br>    "max_length": 60,<br>    "name": "rg"<br>  },<br>  "signalr": {<br>    "max_length": 60,<br>    "name": "sgnlr"<br>  }<br>}</pre> | no |
-| <a name="input_service_mode"></a> [service\_mode](#input\_service\_mode) | The mode of the SignalR Service | `string` | `"Serverless"` | no |
-| <a name="input_network_acl"></a> [network\_acl](#input\_network\_acl) | (Optional) The network ACL configuration | <pre>object({<br>    default_action        = string<br>    allowed_request_types = list(string)<br>  })</pre> | `null` | no |
-| <a name="input_private_endpoints"></a> [private\_endpoints](#input\_private\_endpoints) | (Optional) The private endpoints configuration | <pre>list(object({<br>    private_endpoint_id   = string<br>    allowed_request_types = list(string)<br>  }))</pre> | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 
 ## Outputs
