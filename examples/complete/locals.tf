@@ -11,6 +11,9 @@
 // limitations under the License.
 
 locals {
+  signalr_name        = module.resource_names["signalr"].minimal_random_suffix
+  resource_group_name = module.resource_names["resource_group"].minimal_random_suffix
+
   default_tags = {
     provisioner = "terraform"
   }

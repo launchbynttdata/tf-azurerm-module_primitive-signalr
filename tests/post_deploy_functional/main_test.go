@@ -33,5 +33,5 @@ func TestSignalRModule(t *testing.T) {
 		SetTestConfigFileName(infraTFVarFileNameDefault).
 		Build()
 
-	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestSignalRExists)
+	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestSignalR)
 }

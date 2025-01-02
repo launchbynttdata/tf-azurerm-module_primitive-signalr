@@ -16,7 +16,7 @@ import (
 	"gotest.tools/v3/assert"
 )
 
-func TestSignalRExists(t *testing.T, ctx types.TestContext) {
+func TestSignalR(t *testing.T, ctx types.TestContext) {
 	subscriptionId := os.Getenv("ARM_SUBSCRIPTION_ID")
 
 	if len(subscriptionId) == 0 {
