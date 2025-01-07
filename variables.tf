@@ -11,55 +11,55 @@
 // limitations under the License.
 
 variable "resource_group_name" {
-  description = "(Require) Resource group name of the SignalR Service"
+  description = "Resource group name of the SignalR Service"
   type        = string
   nullable    = false
 }
 
 variable "signalr_location" {
-  description = "(Require) Location of the SignalR Service"
+  description = "Location of the SignalR Service"
   type        = string
   nullable    = false
 }
 
 variable "signalr_name" {
-  description = "(Require) Name of the signalr to create"
+  description = "Name of the signalr to create"
   type        = string
   nullable    = false
 }
 
 variable "public_network_access_enabled" {
-  description = "(Optional) Indicates whether public network access is allowed"
+  description = "Indicates whether public network access is allowed"
   type        = bool
   default     = true
 }
 
 variable "connectivity_logs_enabled" {
-  description = "(Optional) Indicates whether to enable connectivity logs"
+  description = "Indicates whether to enable connectivity logs"
   type        = bool
   default     = false
 }
 
 variable "http_request_logs_enabled" {
-  description = "(Optional) Indicates whether to enable http request logs"
+  description = "Indicates whether to enable http request logs"
   type        = bool
   default     = false
 }
 
 variable "live_trace_enabled" {
-  description = "(Optional) Indicated whether to enable live traces"
+  description = "Indicated whether to enable live traces"
   type        = bool
   default     = false
 }
 
 variable "messaging_logs_enabled" {
-  description = "(Optional) Indicates whether to enable messaging logs"
+  description = "Indicates whether to enable messaging logs"
   type        = bool
   default     = false
 }
 
 variable "service_mode" {
-  description = "(Optional) The service mode of the SignalR Service"
+  description = "The service mode of the SignalR Service"
   type        = string
   default     = "Default"
 
@@ -70,7 +70,7 @@ variable "service_mode" {
 }
 
 variable "sku_name" {
-  description = "(Optional) The SKU of the SignalR Service"
+  description = "The SKU of the SignalR Service"
   type        = string
   default     = "Free_F1"
   validation {
@@ -80,7 +80,7 @@ variable "sku_name" {
 }
 
 variable "sku_capacity" {
-  description = "(Optional) The capacity of the SKU"
+  description = "The capacity of the SKU"
   type        = number
   default     = 1
   validation {
@@ -93,13 +93,13 @@ variable "sku_capacity" {
 }
 
 variable "cors_allowed_origins" {
-  description = "(Optional) The allowed origins for CORS, separated by comma"
+  description = "The allowed origins for CORS, separated by comma"
   type        = list(string)
   default     = []
 }
 
 variable "upstream_endpoint" {
-  description = "(Optional) The upstream endpoint configuration"
+  description = "The upstream endpoint configuration"
   type = object({
     category_pattern = optional(list(string))
     event_pattern    = optional(list(string))
@@ -110,7 +110,7 @@ variable "upstream_endpoint" {
 }
 
 variable "network_acl" {
-  description = "(Optional) The SignalR network ACL configuration"
+  description = "The SignalR network ACL configuration"
   type = object({
     default_action        = string
     allowed_request_types = list(string)
@@ -119,7 +119,7 @@ variable "network_acl" {
 }
 
 variable "private_endpoints" {
-  description = "(Optional) The private endpoints for the SignalR network ACL"
+  description = "The private endpoints for the SignalR network ACL"
   type = list(object({
     private_endpoint_id   = string
     allowed_request_types = list(string)
@@ -128,7 +128,7 @@ variable "private_endpoints" {
 }
 
 variable "tags" {
-  description = "(Optional) A mapping of tags to assign to the resource."
+  description = "A mapping of tags to assign to the resource."
   type        = map(string)
   default     = {}
 }
