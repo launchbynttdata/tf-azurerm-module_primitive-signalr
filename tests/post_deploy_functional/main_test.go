@@ -31,6 +31,13 @@ func TestSignalRModule(t *testing.T) {
 		SetTestConfig(&testimpl.ThisTFModuleConfig{}).
 		SetTestConfigFolderName(testConfigsExamplesFolderDefault).
 		SetTestConfigFileName(infraTFVarFileNameDefault).
+		SetTestSpecificFlags(map[string]types.TestFlags{
+			// signalr cors allowed_origins attribute is being set by default to ["*"] but terraform apply rerun sets this to [] (an empty list)
+			"complete": {
+				"IS_TERRAFORM_IDEMPOTENT_APPLY": false,
+				"SKIP_TEST":                     false,
+			},
+		}).
 		Build()
 
 	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestSignalR)

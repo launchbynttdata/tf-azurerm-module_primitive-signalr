@@ -47,7 +47,7 @@ func TestSignalR(t *testing.T, ctx types.TestContext) {
 			t.Fatalf("failed to finish the request: %v", err)
 		}
 
-		assert.Equal(t, res.Name, signalrName)
+		assert.Equal(t, *res.Name, signalrName)
 	})
 
 }
