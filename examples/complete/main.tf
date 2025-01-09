@@ -37,10 +37,11 @@ module "resource_group" {
 module "signalr" {
   source = "../.."
 
-  signalr_location    = var.region
-  resource_group_name = local.resource_group_name
-  signalr_name        = local.signalr_name
-  tags                = local.tags
+  signalr_location     = var.region
+  resource_group_name  = local.resource_group_name
+  signalr_name         = local.signalr_name
+  cors_allowed_origins = ["*"]
+  tags                 = local.tags
 
   depends_on = [module.resource_group]
 }
