@@ -143,7 +143,7 @@ No modules.
 | <a name="input_service_mode"></a> [service\_mode](#input\_service\_mode) | The service mode of the SignalR Service | `string` | `"Default"` | no |
 | <a name="input_sku_name"></a> [sku\_name](#input\_sku\_name) | The SKU of the SignalR Service | `string` | `"Free_F1"` | no |
 | <a name="input_sku_capacity"></a> [sku\_capacity](#input\_sku\_capacity) | The capacity of the SKU | `number` | `1` | no |
-| <a name="input_cors_allowed_origins"></a> [cors\_allowed\_origins](#input\_cors\_allowed\_origins) | The allowed origins for CORS, separated by comma | `list(string)` | `[]` | no |
+| <a name="input_cors_allowed_origins"></a> [cors\_allowed\_origins](#input\_cors\_allowed\_origins) | The allowed origins for CORS, separated by comma | `list(string)` | <pre>[<br>  "*"<br>]</pre> | no |
 | <a name="input_upstream_endpoint"></a> [upstream\_endpoint](#input\_upstream\_endpoint) | The upstream endpoint configuration | <pre>object({<br>    category_pattern = optional(list(string))<br>    event_pattern    = optional(list(string))<br>    hub_pattern      = optional(list(string))<br>    url_template     = optional(string)<br>  })</pre> | `null` | no |
 | <a name="input_network_acl"></a> [network\_acl](#input\_network\_acl) | The SignalR network ACL configuration | <pre>object({<br>    default_action        = string<br>    allowed_request_types = list(string)<br>  })</pre> | `null` | no |
 | <a name="input_private_endpoints"></a> [private\_endpoints](#input\_private\_endpoints) | The private endpoints for the SignalR network ACL | <pre>list(object({<br>    private_endpoint_id   = string<br>    allowed_request_types = list(string)<br>  }))</pre> | `[]` | no |

@@ -95,7 +95,7 @@ variable "sku_capacity" {
 variable "cors_allowed_origins" {
   description = "The allowed origins for CORS, separated by comma"
   type        = list(string)
-  default     = []
+  default     = ["*"]
 }
 
 variable "upstream_endpoint" {
