@@ -47,7 +47,7 @@ variable "http_request_logs_enabled" {
 }
 
 variable "live_trace_enabled" {
-  description = "Indicated whether to enable live traces"
+  description = "Indicates whether to enable live traces"
   type        = bool
   default     = false
 }
@@ -59,7 +59,7 @@ variable "messaging_logs_enabled" {
 }
 
 variable "service_mode" {
-  description = "The service mode of the SignalR Service"
+  description = "The service mode of the SignalR Service. Possible values are Default, Classic, and Serverless"
   type        = string
   default     = "Default"
 
@@ -70,7 +70,7 @@ variable "service_mode" {
 }
 
 variable "sku_name" {
-  description = "The SKU of the SignalR Service"
+  description = "The SKU of the SignalR Service. Possible values are Free_F1, Standard_S1, Premium_P1, and Premium_P2"
   type        = string
   default     = "Free_F1"
   validation {
@@ -80,7 +80,7 @@ variable "sku_name" {
 }
 
 variable "sku_capacity" {
-  description = "The capacity of the SKU"
+  description = "The capacity of the SKU.  See [the documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/signalr_service#capacity-1) for possible values."
   type        = number
   default     = 1
   validation {
@@ -93,7 +93,9 @@ variable "sku_capacity" {
 }
 
 variable "cors_allowed_origins" {
-  description = "The allowed origins for CORS, separated by comma"
+  description = <<EOF
+  The allowed origins for CORS, separated by comma. The default is set to ["*"] which will allow all origins
+  EOF
   type        = list(string)
   default     = ["*"]
 }
