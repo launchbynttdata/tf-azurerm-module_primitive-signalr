@@ -53,7 +53,7 @@ resource "azurerm_signalr_service" "signalr" {
     }
   }
 
-  tags = var.tags
+  tags = merge(local.tags, { resource_name = var.signalr_name })
 }
 
 resource "azurerm_signalr_service_network_acl" "acl" {
