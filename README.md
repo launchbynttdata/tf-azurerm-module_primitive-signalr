@@ -103,7 +103,7 @@ If `make check` target is successful, developer is good to commit the code to pr
 - runs `conftests`. `conftests` make sure `policy` checks are successful.
 - runs `terratest`. This is integration test suit.
 - runs `opa` tests
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -115,7 +115,7 @@ If `make check` target is successful, developer is good to commit the code to pr
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.117.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.117.1 |
 
 ## Modules
 
@@ -143,10 +143,10 @@ No modules.
 | <a name="input_service_mode"></a> [service\_mode](#input\_service\_mode) | The service mode of the SignalR Service. Possible values are Default, Classic, and Serverless | `string` | `"Default"` | no |
 | <a name="input_sku_name"></a> [sku\_name](#input\_sku\_name) | The SKU of the SignalR Service. Possible values are Free\_F1, Standard\_S1, Premium\_P1, and Premium\_P2 | `string` | `"Free_F1"` | no |
 | <a name="input_sku_capacity"></a> [sku\_capacity](#input\_sku\_capacity) | The capacity of the SKU.  See [the documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/signalr_service#capacity-1) for possible values. | `number` | `1` | no |
-| <a name="input_cors_allowed_origins"></a> [cors\_allowed\_origins](#input\_cors\_allowed\_origins) | The allowed origins for CORS, separated by comma. The default is set to ["*"] which will allow all origins | `list(string)` | <pre>[<br>  "*"<br>]</pre> | no |
-| <a name="input_upstream_endpoint"></a> [upstream\_endpoint](#input\_upstream\_endpoint) | The upstream endpoint configuration | <pre>object({<br>    category_pattern = optional(list(string))<br>    event_pattern    = optional(list(string))<br>    hub_pattern      = optional(list(string))<br>    url_template     = optional(string)<br>  })</pre> | `null` | no |
-| <a name="input_network_acl"></a> [network\_acl](#input\_network\_acl) | The SignalR network ACL configuration | <pre>object({<br>    default_action        = string<br>    allowed_request_types = list(string)<br>  })</pre> | `null` | no |
-| <a name="input_private_endpoints"></a> [private\_endpoints](#input\_private\_endpoints) | The private endpoints for the SignalR network ACL | <pre>list(object({<br>    private_endpoint_id   = string<br>    allowed_request_types = list(string)<br>  }))</pre> | `[]` | no |
+| <a name="input_cors_allowed_origins"></a> [cors\_allowed\_origins](#input\_cors\_allowed\_origins) | The allowed origins for CORS, separated by comma. The default is set to ["*"] which will allow all origins | `list(string)` | <pre>[<br/>  "*"<br/>]</pre> | no |
+| <a name="input_upstream_endpoint"></a> [upstream\_endpoint](#input\_upstream\_endpoint) | The upstream endpoint configuration | <pre>object({<br/>    category_pattern = optional(list(string))<br/>    event_pattern    = optional(list(string))<br/>    hub_pattern      = optional(list(string))<br/>    url_template     = optional(string)<br/>  })</pre> | `null` | no |
+| <a name="input_network_acl"></a> [network\_acl](#input\_network\_acl) | The SignalR network ACL configuration | <pre>object({<br/>    default_action        = string<br/>    allowed_request_types = list(string)<br/>  })</pre> | `null` | no |
+| <a name="input_private_endpoints"></a> [private\_endpoints](#input\_private\_endpoints) | The private endpoints for the SignalR network ACL | <pre>list(object({<br/>    private_endpoint_id   = string<br/>    allowed_request_types = list(string)<br/>  }))</pre> | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 
 ## Outputs
@@ -157,4 +157,4 @@ No modules.
 | <a name="output_signalr_name"></a> [signalr\_name](#output\_signalr\_name) | n/a |
 | <a name="output_location"></a> [location](#output\_location) | n/a |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | n/a |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->

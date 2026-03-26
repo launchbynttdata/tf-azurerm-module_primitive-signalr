@@ -54,6 +54,10 @@ resource "azurerm_signalr_service" "signalr" {
   }
 
   tags = merge(local.tags, { resource_name = var.signalr_name })
+
+  lifecycle {
+    ignore_changes = [sku[0].capacity]
+  }
 }
 
 resource "azurerm_signalr_service_network_acl" "acl" {
