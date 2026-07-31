@@ -107,8 +107,8 @@ If `make check` target is successful, developer is good to commit the code to pr
 ## Requirements
 
 | Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.0 |
+| ---- | ------- |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.3 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 3.117 |
 
 ## Modules
@@ -118,14 +118,14 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [azurerm_signalr_service.signalr](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/signalr_service) | resource |
 | [azurerm_signalr_service_network_acl.acl](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/signalr_service_network_acl) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_connectivity_logs_enabled"></a> [connectivity\_logs\_enabled](#input\_connectivity\_logs\_enabled) | Indicates whether to enable connectivity logs | `bool` | `false` | no |
 | <a name="input_cors_allowed_origins"></a> [cors\_allowed\_origins](#input\_cors\_allowed\_origins) | The allowed origins for CORS, separated by comma. The default is set to ["*"] which will allow all origins | `list(string)` | <pre>[<br/>  "*"<br/>]</pre> | no |
 | <a name="input_http_request_logs_enabled"></a> [http\_request\_logs\_enabled](#input\_http\_request\_logs\_enabled) | Indicates whether to enable http request logs | `bool` | `false` | no |
@@ -146,7 +146,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_location"></a> [location](#output\_location) | n/a |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | n/a |
 | <a name="output_signalr_id"></a> [signalr\_id](#output\_signalr\_id) | n/a |
