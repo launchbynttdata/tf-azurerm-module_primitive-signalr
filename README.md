@@ -77,7 +77,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|---------|
+|------|------|
 | [azurerm_signalr_service.signalr](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/signalr_service) | resource |
 | [azurerm_signalr_service_network_acl.acl](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/signalr_service_network_acl) | resource |
 
@@ -105,7 +105,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|---------|
+|------|-------------|
 | <a name="output_location"></a> [location](#output\_location) | n/a |
 | <a name="output_resource_group_name"></a> [resource\_group\_name](#output\_resource\_group\_name) | n/a |
 | <a name="output_signalr_id"></a> [signalr\_id](#output\_signalr\_id) | n/a |
