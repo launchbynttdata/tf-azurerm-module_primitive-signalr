@@ -39,8 +39,8 @@ func TestComposableSignalR(t *testing.T, ctx types.TestContext) {
 	}
 
 	t.Run("doesSignalRExist", func(t *testing.T) {
-		resourceGroupName := terraform.Output(t, ctx.TerratestTerraformOptions(), "resource_group_name")
-		signalrName := terraform.Output(t, ctx.TerratestTerraformOptions(), "signalr_name")
+		resourceGroupName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "resource_group_name")
+		signalrName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "signalr_name")
 
 		res, err := clientFactory.NewClient().Get(context.Background(), resourceGroupName, signalrName, nil)
 		if err != nil {
